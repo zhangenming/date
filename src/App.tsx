@@ -31,7 +31,7 @@ function App({
       </div>
 
       {/* 星期 */}
-      <div className="border-y flex h-[70rem] text-size-[26rem] text-color-[#1a1a1a]  children:(flex flex-1 items-center justify-center) ">
+      <div className="border-y flex h-[70rem] text-size-[26rem] text-color-[#1a1a1a] items-center children:(w-1/7 text-center) ">
         <div className="text-color-[#bbbbbf]">日</div>
         <div>一</div>
         <div>二</div>
@@ -42,24 +42,20 @@ function App({
       </div>
 
       {/* 日期 */}
-      <div className="grid children:(flex flex-col items-center justify-center text-color-[#bbbbbf] leading-normal) ">
+      <div className="grid children:(flex flex-col items-center justify-evenly text-color-[#bbbbbf] leading-normal) ">
         {<div className={`placeholder${firstDay}`}></div>}
         {monthDays.map(day => {
           const target = targets.find(target => target.date.slice(-2) === day)
           return (
-            <div className="hover:bg-[#12b5b2] children:(flex flex-1) children:hover:text-color-[#fff] ">
+            <div className="hover:bg-[#12b5b2] children:(hover:text-color-[#fff]) ">
               <div
-                className={`items-end text-size-[28rem] ${
+                className={`text-size-[28rem] ${
                   target ? 'text-color-[#1a1a1a]' : ''
                 }`}
               >
                 {day}
               </div>
-              <div
-                className={`items-start text-size-[20rem] ${
-                  target ? 'text-color-[#12b5b2]' : ''
-                }`}
-              >
+              <div className={`h-[1em] text-size-[20rem] text-color-[#12b5b2]`}>
                 {target?.adult_amount}
               </div>
             </div>

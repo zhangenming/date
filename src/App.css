@@ -1,6 +1,9 @@
 :root {
   font-size: 0.5px !important;
 }
+body {
+  place-items: unset !important;
+}
 .grid {
   margin-top: 50rem;
   row-gap: 20rem;
