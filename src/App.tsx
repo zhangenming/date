@@ -22,16 +22,16 @@ function App({
     selectMonthSet(month => month + n)
   }
   return (
-    <>
+    <div className="select-none">
       {/* title */}
-      <div className="title">
+      <div className="flex h-[100rem] mx-[30rem] text-size-[34rem] text-color-[#1a1a1a] justify-between items-center">
         <div className="left" onClick={() => dateHandle(-1)}></div>
         <div className="text-color-[#1a1a1a]">{`${year}年${month}月`}</div>
         <div className="right" onClick={() => dateHandle(1)}></div>
       </div>
 
       {/* 星期 */}
-      <div className="flex text-color-[#1a1a1a] week">
+      <div className="border-y flex h-[70rem] text-size-[26rem] text-color-[#1a1a1a]  children:(flex flex-1 items-center justify-center) ">
         <div className="text-color-[#bbbbbf]">日</div>
         <div>一</div>
         <div>二</div>
@@ -42,23 +42,31 @@ function App({
       </div>
 
       {/* 日期 */}
-      <div className="grid">
+      <div className="grid children:(flex flex-col items-center justify-center text-color-[#bbbbbf] leading-normal) ">
         {<div className={`placeholder${firstDay}`}></div>}
-        {monthDays.map(e => {
-          const target = targets.find(target => target.date.slice(-2) === e)
+        {monthDays.map(day => {
+          const target = targets.find(target => target.date.slice(-2) === day)
           return (
-            <div className="rounded-md flex-col text-color-[#bbbbbf] items justify-center hover:bg-[#12b5b2] ">
-              <div className={target ? 'h-130 text-color-[#1a1a1a]' : 'h-130'}>
-                {e}
+            <div className="hover:bg-[#12b5b2] children:(flex flex-1) children:hover:text-color-[#fff] ">
+              <div
+                className={`items-end text-size-[28rem] ${
+                  target ? 'text-color-[#1a1a1a]' : ''
+                }`}
+              >
+                {day}
               </div>
-              <div className={target ? 'text-color-[#12b5b2]' : 'opacity-0 '}>
-                {target?.adult_amount || 0}
+              <div
+                className={`items-start text-size-[20rem] ${
+                  target ? 'text-color-[#12b5b2]' : ''
+                }`}
+              >
+                {target?.adult_amount}
               </div>
             </div>
           )
         })}
       </div>
-    </>
+    </div>
   )
 }
 
